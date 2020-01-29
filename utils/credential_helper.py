@@ -17,8 +17,8 @@ class Credential:
         self.password = password
 
 
-def save_redshift_credentials(user: str, password: str):
-    credential = Credential(__APP_NAME__+__DELIM__+__REDSHIFT__, user, password)
+def save_redshift_credentials(user: str, password: str) -> None:
+    credential = Credential(__APP_NAME__ + __DELIM__ + __REDSHIFT__, user, password)
     save_credentials(credential)
 
 

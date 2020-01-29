@@ -1,3 +1,6 @@
+.mypy_cache/
+.tox/
+.eggs/
 .idea/
 /pypandas_sql.egg-info/
 /dist/

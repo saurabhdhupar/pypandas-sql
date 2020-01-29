@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Any, Optional
 
 
 class DBConnector(ABC):
@@ -11,17 +12,17 @@ class DBConnector(ABC):
         super(DBConnector, self).__init__()
 
     @abstractmethod
-    def get_uri(self):
+    def get_uri(self, schema: Optional[str]) -> str:
         pass
 
     @abstractmethod
-    def get_engine(self, engine_kwargs=None):
+    def get_engine(self, schema: Optional[str]) -> Any:
         pass
 
     @abstractmethod
-    def get_connection(self):
+    def get_connection(self, schema: Optional[str]) -> Any:
         pass
 
     @abstractmethod
-    def get_cursor(self):
+    def get_cursor(self, schema: Optional[str]) -> Any:
         pass

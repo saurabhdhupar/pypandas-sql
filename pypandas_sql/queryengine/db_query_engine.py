@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 
 from pypandas_sql.dbconnector.db_connector import DBConnector
+
 from pandas import DataFrame
 
 
@@ -12,13 +13,13 @@ class DBQueryEngine(ABC):
         super(DBQueryEngine, self).__init__()
 
     @abstractmethod
-    def get_pandas_df(self, sql: str) -> DataFrame:
+    def get_pandas_df(self, sql: str, schema: Optional[str], parameters: Optional[List]) -> DataFrame:
         pass
 
     @abstractmethod
-    def get_records(self, sql: str) -> List[Tuple]:
+    def get_records(self, sql: str, schema: Optional[str], parameters: Optional[List]) -> List[Tuple]:
         pass
 
     @abstractmethod
-    def get_first_record(self, sql: str) -> List[Tuple]:
+    def get_first_record(self, sql: str, schema: Optional[str], parameters: Optional[List]) -> List[Tuple]:
         pass

@@ -1,7 +1,6 @@
 import errno
 import os
 from typing import Dict
-
 from configparser import ConfigParser
 
 __REDSHIFT_CONFIG_FLE__ = 'redshift.ini'
@@ -12,7 +11,7 @@ __PORT__ = 'port'
 __USER_NAME = 'user_name'
 
 
-def write_config_file(config: ConfigParser, file_path: str):
+def write_config_file(config: ConfigParser, file_path: str) -> None:
     if not os.path.exists(os.path.dirname(file_path)):
         try:
             os.makedirs(os.path.dirname(file_path))
@@ -66,4 +65,3 @@ def write_redshift_config_file(file_path: str, host: str, port: int, user: str) 
     config[__REDSHIFT__][__PORT__] = str(port)
     config[__REDSHIFT__][__USER_NAME] = user
     write_config_file(config, file_path)
-

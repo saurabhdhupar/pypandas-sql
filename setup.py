@@ -20,6 +20,15 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3',
-    install_requires=['psycopg2-binary', 'pandas', 'click', 'configparser'],
-    include_package_data=True
+    setup_requires=["pytest-runner<4"],
+    tests_require=["pytest"],
+    install_requires=[
+        'sqlalchemy~=1.3',
+        'psycopg2-binary>=2.7.4',
+        'pandas>=0.17.1, <1.0.0',
+        'Click==7.0',
+        'keyring==21.0.0',
+        'appdirs==1.4.3',
+        'configparser==4.0.2'
+    ]
 )
