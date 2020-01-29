@@ -1,3 +1,5 @@
+.coverage
+coverage.xml
 .mypy_cache/
 .tox/
 .eggs/

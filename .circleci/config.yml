@@ -34,7 +34,13 @@ jobs:
           key: tox-env-{{ checksum "requirements/default.txt" }}-{{ checksum "requirements/test.txt" }}
 
       - run:
-          name: run tests
+          name: build project
           command: |
             . ../venv/bin/activate
             tox --workdir ../.tox
+
+      - run:
+          name: coverage
+          command: |
+            . ../venv/bin/activate
+            codecov
