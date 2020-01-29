@@ -10,3 +10,5 @@ pep8-naming
 pydocstyle==3.0.0
 pytest
 pytest-mock
+codecov
+coverage
