@@ -38,3 +38,10 @@ jobs:
           command: |
             . ../venv/bin/activate
             tox --workdir ../.tox
+
+      - run:
+          name: coverage
+          command: |
+            . ../venv/bin/activate
+            pip install codecov
+            codecov
