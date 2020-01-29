@@ -32,3 +32,9 @@ jobs:
           paths:
             - ../.tox
           key: tox-env-{{ checksum "requirements/default.txt" }}-{{ checksum "requirements/test.txt" }}
+
+      - run:
+          name: run tests
+          command: |
+            . ../venv/bin/activate
+            tox --workdir ../.tox
