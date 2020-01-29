@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+import click
+
+from utils import config_helper
+from utils.credential_helper import save_redshift_credentials
+from utils.filepath_helper import get_redshift_config_path
+
+__APP_NAME__ = 'pypandasql'
+
+
+@click.group()
+def pypandasql() -> None:
+    pass
+
+
+@click.command()
+@click.argument('configure', required=False)
+@click.argument('show', required=False)
+@click.option('--host', help='Redshift Host Name')
+@click.option('--port', help='Redshift Port')
+@click.option('--user', help='Redshift Username')
+@click.option('--password', help='Redshift Password')
+def redshift(configure: str, host: str, port: str, user: str, password: str) -> None:
+    if configure is not None:
+        if host is None:
+            host = click.promt('Redshift Host Name', type=str)
+        if port is None:
+            port = click.promt('Redshift Port', type=int)
+        if user is None:
+            user = click.promt('Redshift User Name')
+        if password is None:
+            password = click.promt('Redshift Password')
+        save_redshift_credentials(user, password)
+        config_helper.create_redshift_config_file(config_file_path=get_redshift_config_path(),
+                                                  host=host, port=port, user=user)
+
+
+pypandasql.add_command(redshift)
+
+if __name__ == '__main__':
+    pypandasql()

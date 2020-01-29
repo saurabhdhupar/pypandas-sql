@@ -1,0 +1,12 @@
+alchemy-mock
+black
+flake8
+flake8-colors
+flake8-docstrings>=0.2.7
+flake8-import-order>0.9
+flake8-tidy-imports==2.0
+mock
+pep8-naming
+pydocstyle==3.0.0
+pytest
+pytest-mock

@@ -1,0 +1,12 @@
+.mypy_cache/
+.tox/
+.eggs/
+.idea/
+/pypandas_sql.egg-info/
+/dist/
+build/
+.settings/
+.project
+.classpath
+*.pyc
+/__pycache__/
