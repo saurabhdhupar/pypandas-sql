@@ -1,15 +1,4 @@
-==============
-pypandas-sql
-==============
-|build-status|
+# pypandas-sql
 
-
-
-
-
-
-
-
-.. |build-status| image:: https://circleci.com/gh/saurabhdhupar/pypandas-sql.png?style=shield
-    :target: https://circleci.com/gh/saurabhdhupar/pypandas-sql
-    :alt: Build Status
+[![CircleCI](https://circleci.com/gh/saurabhdhupar/pypandas-sql.svg?style=svg)](https://circleci.com/gh/saurabhdhupar/pypandas-sql)
+[![codecov](https://codecov.io/gh/saurabhdhupar/pypandas-sql/branch/master/graph/badge.svg)](https://codecov.io/gh/saurabhdhupar/pypandas-sql)
