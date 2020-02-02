@@ -31,8 +31,8 @@ def redshift(configure: str, host: str, port: str, user: str, password: str) -> 
         if password is None:
             password = click.promt('Redshift Password')
         save_redshift_credentials(user, password)
-        config_helper.create_redshift_config_file(config_file_path=get_redshift_config_path(),
-                                                  host=host, port=port, user=user)
+        config_helper.write_redshift_config_file(file_path=get_redshift_config_path(),
+                                                 host=host, port=port, user=user)
 
 
 pypandasql.add_command(redshift)

@@ -55,7 +55,7 @@ def read_redshift_config_file(file_path: str) -> Dict:
             config_prop[prop] = config[__REDSHIFT__][prop]
         return config_prop
     except FileNotFoundError:
-        raise FileNotFoundError("Redshift Config File Not Found")
+        raise FileNotFoundError("Redshift Config File Not Found. Use 'pypandasql configure' to use this method")
 
 
 def write_redshift_config_file(file_path: str, host: str, port: int, user: str) -> None:
