@@ -13,3 +13,4 @@ pytest-mock
 codecov
 coverage
 pytest-cov
+pyfakefs

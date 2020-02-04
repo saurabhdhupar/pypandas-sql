@@ -1,3 +1,12 @@
 [report]
 fail_under = 0
 show_missing = True
+exclude_lines =
+    pragma: no cover
+    @abstract
+    @abstractmethod
+    raise NotImplementedError
+omit =
+    tests/*
+    setup.py
+    .tox/*

@@ -11,4 +11,5 @@ build/
 .project
 .classpath
 *.pyc
+venv/
 /__pycache__/
