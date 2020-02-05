@@ -35,15 +35,15 @@ def read_config_file(file_path: str) -> ConfigParser:
 
 
 def get_redshift_user(config: Dict) -> str:
-    return config[__REDSHIFT__][__USER_NAME]
+    return config[__USER_NAME]
 
 
 def get_redshift_host(config: Dict) -> str:
-    return config[__REDSHIFT__][__HOST__]
+    return config[__HOST__]
 
 
 def get_redshift_port(config: Dict) -> int:
-    return int(config[__REDSHIFT__][__PORT__])
+    return int(config[__PORT__])
 
 
 def read_redshift_config_file(file_path: str) -> Dict:
@@ -55,7 +55,7 @@ def read_redshift_config_file(file_path: str) -> Dict:
             config_prop[prop] = config[__REDSHIFT__][prop]
         return config_prop
     except FileNotFoundError:
-        raise FileNotFoundError("Redshift Config File Not Found")
+        raise FileNotFoundError("Redshift Config File Not Found. Use 'pypandasql configure' to use this method")
 
 
 def write_redshift_config_file(file_path: str, host: str, port: int, user: str) -> None:

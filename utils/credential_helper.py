@@ -2,7 +2,7 @@ from typing import Dict
 
 import keyring
 
-from utils.config_helper import get_redshift_user
+from utils import config_helper
 
 __REDSHIFT__ = 'redshift'
 __APP_NAME__ = 'pypandasql'
@@ -24,7 +24,7 @@ def save_redshift_credentials(user: str, password: str) -> None:
 
 def get_redshift_credentials(config: Dict) -> Credential:
     service_name = __APP_NAME__ + __DELIM__ + __REDSHIFT__
-    user = get_redshift_user(config)
+    user = config_helper.get_redshift_user(config)
     return Credential(service_name=service_name, user=user, password=keyring.get_password(service_name, user))
 
 

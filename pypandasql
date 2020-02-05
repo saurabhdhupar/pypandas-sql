@@ -15,7 +15,6 @@ def pypandasql() -> None:
 
 @click.command()
 @click.argument('configure', required=False)
-@click.argument('show', required=False)
 @click.option('--host', help='Redshift Host Name')
 @click.option('--port', help='Redshift Port')
 @click.option('--user', help='Redshift Username')
@@ -23,16 +22,16 @@ def pypandasql() -> None:
 def redshift(configure: str, host: str, port: str, user: str, password: str) -> None:
     if configure is not None:
         if host is None:
-            host = click.promt('Redshift Host Name', type=str)
+            host = click.prompt('Redshift Host Name', type=str)
         if port is None:
-            port = click.promt('Redshift Port', type=int)
+            port = click.prompt('Redshift Port', type=int)
         if user is None:
-            user = click.promt('Redshift User Name')
+            user = click.prompt('Redshift User Name')
         if password is None:
-            password = click.promt('Redshift Password')
+            password = click.prompt('Redshift Password')
         save_redshift_credentials(user, password)
-        config_helper.create_redshift_config_file(config_file_path=get_redshift_config_path(),
-                                                  host=host, port=port, user=user)
+        config_helper.write_redshift_config_file(file_path=get_redshift_config_path(),
+                                                 host=host, port=port, user=user)
 
 
 pypandasql.add_command(redshift)
