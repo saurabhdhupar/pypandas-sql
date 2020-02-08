@@ -23,23 +23,25 @@ pip install pypandas-sql
 
 ```python
 pypandasql -help
-Usage: pypandasql [OPTIONS] COMMAND [ARGS]...
 
-Options:
-  -help  Show this message and exit.
-
-Commands:
-  redshift
+    Usage: pypandasql [OPTIONS] COMMAND [ARGS]...
+    
+    Options:
+      -help  Show this message and exit.
+    
+    Commands:
+      redshift
 ```
 
 ## Configure Redshift Credentials 
 #### Enter Details (Host Name , Port, User Name, Password)
 ```python
 pypandasql redshift configure
-Redshift Host Name: xxx
-Redshift Port: 123
-Redshift User Name: xxx
-Redshift Password: xxx
+
+    Redshift Host Name: xxx
+    Redshift Port: 123
+    Redshift User Name: xxx
+    Redshift Password: xxx
 ```
 
 ## Usage
