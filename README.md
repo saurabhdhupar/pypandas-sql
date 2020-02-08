@@ -46,7 +46,7 @@ pypandasql redshift configure
 
 ## Usage
 
-### Redshift Example (SQL -> Pandas)
+### Redshift Example
 
 #### Initialize 
 ```python
@@ -54,7 +54,7 @@ from pypandas_sql.queryengine.redshift_query_engine import RedshiftQueryEngine
 query_engine = RedshiftQueryEngine()
 ```
 
-#### Query Redshift Table
+#### Query
 ```python
 df = query_engine.get_pandas_df(sql='<select * from part limit 10>', schema='<dev>')
 
@@ -74,7 +74,7 @@ df = query_engine.get_pandas_df(sql='<select * from part limit 10>', schema='<de
 
 ```
 
-#### Query Redshift Table (using templated parameters)
+#### Query (using templated parameters)
 ```python
 s = 'select count(*) as ttl_customer, c_city, c_region from customer where c_mktsegment = %(segment)s group by c_region,c_city;'
 df = query_engine.get_pandas_df(sql=s, schema='dev', parameters={"segment":"FURNITURE"})
