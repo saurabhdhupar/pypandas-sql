@@ -19,11 +19,11 @@ pip install pypandas-sql
 ## Support Commands
 
 ```python
-pypandasql --help
+pypandasql -help
 Usage: pypandasql [OPTIONS] COMMAND [ARGS]...
 
 Options:
-  --help  Show this message and exit.
+  -help  Show this message and exit.
 
 Commands:
   redshift
