@@ -6,8 +6,11 @@
 ## pypandas-sql
 
 This package is designed to make it easier to get data from most commonly used databases/data warehouse into a pandas DataFrame using SQL.
+
 Allow users to manage credentials by doing a one time configuration thus avoiding hardcoding them in code. 
+
 Initial release supports Redshift with plans to support other ones. [see issues](https://github.com/saurabhdhupar/pypandas-sql/issues)
+
 Package only supports python3.6.
 
 ## Installation
