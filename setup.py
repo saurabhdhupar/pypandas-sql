@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pypandas_sql",
-    version="0.0.1",
+    version="0.0.2",
     scripts=['pypandasql'],
     packages=setuptools.find_packages(),
     author="Saurabh Dhupar",
