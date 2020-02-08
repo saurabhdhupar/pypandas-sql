@@ -25,10 +25,17 @@ setuptools.setup(
     install_requires=[
         'sqlalchemy~=1.3',
         'psycopg2-binary>=2.7.4',
-        'pandas>=0.17.1, <1.0.0',
+        'numpy==1.18.1',
+        'python-dateutil==2.8.1',
+        'pytz==2019.3',
+        'six==1.14.0',
+        'zipp==2.2.0',
+        'SecretStorage==3.1.2',
+        'pandas==0.25.3',
         'Click==7.0',
+        'importlib-metadata==1.5.0',
         'keyring==21.0.0',
         'appdirs==1.4.3',
-        'configparser==4.0.2'
+        'configparser==4.0.2',
     ]
 )
