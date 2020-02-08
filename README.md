@@ -51,12 +51,13 @@ pypandasql redshift configure
 #### Initialize 
 ```python
 from pypandas_sql.queryengine.redshift_query_engine import RedshiftQueryEngine
+
 query_engine = RedshiftQueryEngine()
 ```
 
 #### Query
 ```python
-df = query_engine.get_pandas_df(sql='<select * from part limit 10>', schema='<dev>')
+df = query_engine.get_pandas_df(sql='select * from part limit 10', schema='dev')
 
 >>> df
 
