@@ -2,8 +2,8 @@
 import click
 
 from utils import config_helper
-from utils.credential_helper import save_redshift_credentials
-from utils.filepath_helper import get_redshift_config_path
+from utils.credential_helper import save_redshift_credentials, save_mysql_credentials
+from utils.filepath_helper import get_redshift_config_path, get_mysql_config_path
 
 __APP_NAME__ = 'pypandasql'
 
@@ -28,13 +28,40 @@ def redshift(configure: str, host: str, port: str, user: str, password: str) -> 
         if user is None:
             user = click.prompt('Redshift User Name')
         if password is None:
-            password = click.prompt('Redshift Password')
+            password = click.prompt('Redshift Password', hide_input=True)
         save_redshift_credentials(user, password)
         config_helper.write_redshift_config_file(file_path=get_redshift_config_path(),
                                                  host=host, port=port, user=user)
 
 
+@click.command()
+@click.argument('configure', required=False)
+@click.option('--host', help='MySQL Host Name')
+@click.option('--port', help='MySQL Port', type=int)
+@click.option('--user', help='MySQL Username')
+@click.option('--password', help='MySQL Password')
+@click.option('--ssl_cert', help='ssl certificate path', required=False)
+@click.option('--ssl_ca', help='ssl ca path', required=False)
+@click.option('--ssl_key', help='ssl pem key path', required=False)
+def mysql(configure: str, host: str, port: str, user: str, password: str, ssl_cert: str, ssl_ca: str,
+          ssl_key: str) -> None:
+    if configure is not None:
+        if host is None:
+            host = click.prompt('MySQL Host Name', type=str)
+        if port is None:
+            port = click.prompt('MySQL Port', type=int)
+        if user is None:
+            user = click.prompt('MySQL User Name')
+        if password is None:
+            password = click.prompt('MySQL Password', hide_input=True)
+        save_mysql_credentials(user, password)
+        config_helper.write_mysql_config_file(file_path=get_mysql_config_path(),
+                                              host=host, port=port, user=user, ssl_cert_path=ssl_cert,
+                                              ssl_ca_path=ssl_ca, ssl_key_path=ssl_key)
+
+
 pypandasql.add_command(redshift)
+pypandasql.add_command(mysql)
 
 if __name__ == '__main__':
     pypandasql()

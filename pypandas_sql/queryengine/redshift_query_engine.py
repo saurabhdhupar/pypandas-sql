@@ -1,4 +1,4 @@
-from typing import List, Tuple, Optional
+from typing import List, Optional
 from contextlib import closing
 
 from pandas import DataFrame
@@ -18,25 +18,3 @@ class RedshiftQueryEngine(DBQueryEngine):
         conn = self.db_connector.get_connection(schema)
         with closing(conn):
             return psql.read_sql(sql, con=conn, params=parameters)
-
-    def get_records(self, sql: str, schema: Optional[str], parameters: Optional[List] = None) -> List[Tuple]:
-        assert sql is not None and len(sql) > 0
-        conn = self.db_connector.get_connection(schema)
-        with closing(conn):
-            with closing(conn.cursor()) as cur:
-                if parameters is not None:
-                    cur.execute(sql, parameters)
-                else:
-                    cur.execute(sql)
-                return cur.fetchall()
-
-    def get_first_record(self, sql: str, schema: Optional[str], parameters: Optional[List] = None) -> List[Tuple]:
-        assert sql is not None and len(sql) > 0
-        conn = self.db_connector.get_connection(schema)
-        with closing(conn):
-            with closing(conn.cursor()) as cur:
-                if parameters is not None:
-                    cur.execute(sql, parameters)
-                else:
-                    cur.execute(sql)
-                return cur.fetchone()

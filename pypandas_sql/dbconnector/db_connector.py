@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Any, Optional
 
+import sqlalchemy
+
 
 class DBConnector(ABC):
 
@@ -15,14 +17,14 @@ class DBConnector(ABC):
     def get_uri(self, schema: Optional[str]) -> str:
         pass
 
-    @abstractmethod
     def get_engine(self, schema: Optional[str]) -> Any:
-        pass
+        assert schema is not None and len(schema) > 0
+        return sqlalchemy.create_engine(self.get_uri(schema))
 
     @abstractmethod
     def get_connection(self, schema: Optional[str]) -> Any:
         pass
 
-    @abstractmethod
     def get_cursor(self, schema: Optional[str]) -> Any:
-        pass
+        assert schema is not None and len(schema) > 0
+        return self.get_connection(schema).cursor()
