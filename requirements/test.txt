@@ -8,7 +8,7 @@ flake8-tidy-imports==2.0
 mock
 pep8-naming
 pydocstyle==3.0.0
-pytest
+pytest!=3.0.5,!=5.2.3
 pytest-mock
 codecov
 coverage
