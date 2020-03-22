@@ -1,3 +1,43 @@
+[tool.poetry]
+name = "pypandas_sql"
+version = "0.2.0"
+description = "Utility to read/write data from various data sources"
+authors = ["Saurabh Dhupar <saurabh.dhupar@gmail.com>"]
+repository = "https://github.com/saurabhdhupar/pypandas-sql"
+homepage = "https://github.com/saurabhdhupar/pypandas-sql"
+license = "APACHE"
+readme = "README.md"
+keywords = ["sql", "pandas", "data warehouse"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+sqlalchemy = ">=1.3"
+psycopg2-binary = ">=2.7.4"
+numpy = ">=1.18.1"
+python-dateutil = ">=2.8.1"
+pytz = ">=2019.3"
+six = ">=1.14.0"
+zipp = ">=2.2.0"
+SecretStorage = ">=3.1.2"
+pandas = ">=0.25.3"
+Click = ">=7.0"
+importlib-metadata = ">=1.5.0"
+keyring = ">=21.0.0"
+appdirs = ">=1.4.3"
+configparser = ">=4.0.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.0"
+
+[tool.poetry.scripts]
+pypandasql = 'pypandasql:main'
+
 [build-system]
-requires = ["setuptools>=40.8.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry>=1.0.0b9"]
+build-backend = "poetry.masonry.api"
