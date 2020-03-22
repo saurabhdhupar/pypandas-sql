@@ -4,6 +4,7 @@ import keyring
 
 from utils import config_helper
 
+__MYSQL__ = 'mysql'
 __REDSHIFT__ = 'redshift'
 __APP_NAME__ = 'pypandasql'
 __DELIM__ = '-'
@@ -22,9 +23,26 @@ def save_redshift_credentials(user: str, password: str) -> None:
     save_credentials(credential)
 
 
+def save_mysql_credentials(user: str, password: str) -> None:
+    credential = Credential(__APP_NAME__ + __DELIM__ + __MYSQL__, user, password)
+    save_credentials(credential)
+
+
 def get_redshift_credentials(config: Dict) -> Credential:
     service_name = __APP_NAME__ + __DELIM__ + __REDSHIFT__
     user = config_helper.get_redshift_user(config)
+    return Credential(service_name=service_name, user=user, password=keyring.get_password(service_name, user))
+
+
+def get_mysql_credentials(config: Dict) -> Credential:
+    service_name = __APP_NAME__ + __DELIM__ + __MYSQL__
+    user = config_helper.get_mysql_user(config)
+    return Credential(service_name=service_name, user=user, password=keyring.get_password(service_name, user))
+
+
+def get_mysql_config_path(config: Dict) -> Credential:
+    service_name = __APP_NAME__ + __DELIM__ + __MYSQL__
+    user = config_helper.get_mysql_user(config)
     return Credential(service_name=service_name, user=user, password=keyring.get_password(service_name, user))
 
 

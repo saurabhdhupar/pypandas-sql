@@ -1,7 +1,6 @@
 from typing import Any, Optional
 
 import psycopg2
-import sqlalchemy
 
 from pypandas_sql.dbconnector.db_connector import DBConnector
 from utils import config_helper, credential_helper, filepath_helper
@@ -26,10 +25,6 @@ class RedshiftConnector(DBConnector):
         port = config_helper.get_redshift_port(self.connection_attr)
         return f'{self.engine_name}://{credentials.user}:{credentials.password}@{host}:{port}/{schema}'
 
-    def get_engine(self, schema: Optional[str]) -> Any:
-        assert schema is not None and len(schema) > 0
-        return sqlalchemy.create_engine(self.get_uri(schema))
-
     def get_connection(self, schema: Optional[str]) -> Any:
         assert schema is not None and len(schema) > 0
         credentials = self.connection_attr[__CREDENTIALS__]
@@ -38,7 +33,3 @@ class RedshiftConnector(DBConnector):
                                 port=config_helper.get_redshift_port(self.connection_attr),
                                 user=credentials.user,
                                 password=credentials.password)
-
-    def get_cursor(self, schema: Optional[str]) -> Any:
-        assert schema is not None and len(schema) > 0
-        return self.get_connection(schema).cursor()
