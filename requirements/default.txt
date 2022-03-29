@@ -7,4 +7,4 @@ keyring==21.0.0
 appdirs==1.4.3
 mypy==0.761
 mypy-extensions==0.4.3
-poetry==1.0.5
+poetry==1.1.9
